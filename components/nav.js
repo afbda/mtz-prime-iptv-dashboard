@@ -8,23 +8,35 @@ const links = [
 export default function Nav() {
   return (
     <nav>
-      <ul className="flex items-center justify-between p-8">
+      <ul className="bg-grey-light flex items-center justify-around p-8">
         <li>
           <Link href="/">
             <a className="text-blue-500 no-underline text-accent-1 dark:text-blue-300">
-              Home
+              Clientes
             </a>
           </Link>
         </li>
-        <ul className="flex items-center justify-between space-x-4">
-          {links.map(({ href, label }) => (
-            <li key={`${href}${label}`}>
-              <a href={href} className="no-underline btn-blue">
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <li>
+          <Link href="/provider">
+            <a className="text-blue-500 no-underline text-accent-1 dark:text-blue-300">
+              Fornecedores
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/device">
+            <a className="text-blue-500 no-underline text-accent-1 dark:text-blue-300">
+              Aparelhos
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/iptvapp">
+            <a className="text-blue-500 no-underline text-accent-1 dark:text-blue-300">
+              Aplicativos
+            </a>
+          </Link>
+        </li>
       </ul>
     </nav>
   )

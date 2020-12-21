@@ -1,0 +1,19 @@
+export default class Client {
+    nome;
+    senha;
+    vencimentoCorreto;
+    vencimentoQuadroCliente;
+    fornecedor;
+    numeroConexoes;
+    quantidadeMeses;
+    valorAReceberEmReais;
+    valorAReceberEmDolares;
+    numeroTelefone;
+    status;
+    URLCliente;
+    notas;
+    MACAddress;
+    aparelho;
+    aplicativo;
+    DNSCliente;
+}
