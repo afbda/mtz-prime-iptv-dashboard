@@ -13,7 +13,7 @@ async function teste (req, res) {
     if(req.method === 'PUT'){
         if(req.body._id){
             const {db} = await connect();
-            const query = {_id: req.body._id};
+            const query = {_id: ObjectId(req.body._id)};
             const result = await db.collection('client').updateOne(query, req.body)
             res.status(200).json(result);
             
@@ -24,7 +24,7 @@ async function teste (req, res) {
         if(req.body._id){
             console.log("bateu muito")
             const {db} = await connect();
-            const query = {_id: req.body._id};
+            const query = {_id: ObjectId(req.body._id)};
             await db.collection('client').deleteOne(query)
             res.status(200).json({teste: "bateu"});
         }
