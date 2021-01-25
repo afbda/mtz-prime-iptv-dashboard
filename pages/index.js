@@ -36,6 +36,7 @@ export default function IndexPage() {
   async function saveClient(){
     if(client._id){
       await axios.put(window.location.origin+"/api/client", client);
+      
     }else{
       try{
         await axios.post(window.location.origin+"/api/client", client);
@@ -104,19 +105,19 @@ export default function IndexPage() {
           </tr>
         </thead>
         {
-          clientes == null || clientes == undefined || clientes.length === 0 ? (<div className="empty">Acabou :(</div>):
+          clientes == null || clientes == undefined || clientes.length === 0 ? (<tbody></tbody>):
           (
             <tbody>
             {
               clientes.map((cliente, index) => (
                 <tr key={index} onClick={() => editClient(cliente)}>
-                  <td class="border">{cliente.numeroTelefone}</td>
-                  <th class="border ">{cliente.nome}</th>
-                  <th class="border ">{cliente.senha}</th>
-                  <th class="border ">{cliente.MACAddress}</th>
-                  <th class="border ">{cliente.fornecedor}</th>
-                  <th class="border ">{cliente.aparelho}</th>
-                  <th class="border ">{cliente.aplicativo}</th>
+                  <td className="border">{cliente.numeroTelefone}</td>
+                  <th className="border ">{cliente.nome}</th>
+                  <th className="border ">{cliente.senha}</th>
+                  <th className="border ">{cliente.MACAddress}</th>
+                  <th className="border ">{cliente.fornecedor}</th>
+                  <th className="border ">{cliente.aparelho}</th>
+                  <th className="border ">{cliente.aplicativo}</th>
                   {/* <th>{client.vencimentoCorreto}</th>
                   <th>{client.vencimentoQuadroCliente}</th>
                   <th>{client.numeroConexoes}</th>

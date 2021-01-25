@@ -1,29 +1,32 @@
 import connect from '../../database/database'
 
-export default async (req, res) => {
+async function teste (req, res) {
+    console.log("bateu primeiro")
     if(req.method === 'POST'){
         const {db} = await connect();
 
-        const response = await db.collection('client').insertOne(req.body);
-        res.status(200).json(response.ops[0]);
-
+        db.collection('client').insertOne(req.body).then(() => {
+            res.status(201).end();
+        });
     }
 
     if(req.method === 'PUT'){
         if(req.body._id){
             const {db} = await connect();
             const query = {_id: req.body._id};
-            const response = await db.collection('client').replaceOne(query, req.body);
-            res.status(200).json(response.ops[0]);
+            const result = await db.collection('client').updateOne(query, req.body)
+            res.status(200).json(result);
+            
         }
     }
 
     if(req.method === 'DELETE'){
         if(req.body._id){
+            console.log("bateu muito")
             const {db} = await connect();
             const query = {_id: req.body._id};
-            const response = await db.collection('client').deleteOne(query);
-            res.status(200).json(response.ops[0]);
+            await db.collection('client').deleteOne(query)
+            res.status(200).json({teste: "bateu"});
         }
     }
 
@@ -36,5 +39,10 @@ export default async (req, res) => {
         });
         
     }
-    
+
+    if(req.method != 'GET' && req.method != 'POST' && req.method != 'PUT' && req.method != 'DELETE'){
+        res.status(400).json({ error: 'Wrong request method' });
+    }
 }
+
+export default teste;
