@@ -35,7 +35,13 @@ export default function IndexPage() {
 
   async function saveClient(){
     if(client._id){
-      await axios.put(window.location.origin+"/api/client", client);
+      try{
+        await axios.put(window.location.origin+"/api/client", client);
+      }catch(err){
+        debugger;
+        console.log(err);
+      }
+      
       
     }else{
       try{
