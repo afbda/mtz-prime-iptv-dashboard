@@ -1,4 +1,5 @@
 import connect from '../../database/database'
+var ObjectId = require('mongodb').ObjectID;
 
 async function teste (req, res) {
     console.log("bateu primeiro")
