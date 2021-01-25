@@ -16,8 +16,28 @@ async function teste (req, res) {
             console.log(req.body)
             const {db} = await connect();
             var id = req.body._id;
+            const body = 
+            {
+                "numeroTelefone": req.body.numeroTelefone,
+                "nome": req.body.nome,
+                "senha": req.body.senha,
+                "MACAddress": req.body.MACAddress,
+                "fornecedor": req.body.fornecedor,
+                "aparelho": req.body.aparelho,
+                "valorAReceberEmReais": req.body.valorAReceberEmReais,
+                "quantidadeMeses": req.body.quantidadeMeses,
+                "notas": req.body.notas,
+                "DNSCliente": req.body.DNSCliente,
+                "numeroConexoes": req.body.numeroConexoes,
+                "vencimentoQuadroCliente": req.body.vencimentoQuadroCliente,
+                "status": req.body.status,
+                "vencimentoCorreto": req.body.vencimentoCorreto,
+                "URLCliente": req.body.URLCliente,
+                "valorAReceberEmDolares": req.body.valorAReceberEmDolares,
+                "aplicativo": req.body.aplicativo
+            }
             req.body._id = null;
-            const result = await db.collection('client').replaceOne({ "_id" : ObjectId(id)}, req.body)
+            const result = await db.collection('client').replaceOne({ "_id" : ObjectId(id)}, body)
             res.status(200).json(result);
             
         }
