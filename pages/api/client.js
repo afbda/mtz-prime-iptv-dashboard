@@ -15,7 +15,7 @@ async function teste (req, res) {
         if(req.body._id){
             console.log(req.body)
             const {db} = await connect();
-            const result = await db.collection('client').updateOne({ "_id" : ObjectId(req.body._id)}, req.body)
+            const result = await db.collection('client').replaceOne({ "_id" : ObjectId(req.body._id)}, req.body)
             res.status(200).json(result);
             
         }
